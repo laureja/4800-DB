@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Orders</title>
+</head>
+<body>
+<h1><center>Restaurant Advisor</center></h1>
+<a href="/homeScreen.html" target="_parent"><button>Home</button></a>
+<a href="/Restaurants.html" target="_parent"><button>Restaurants</button></a>
+<a href="/reviews.html" target="_parent"><button>Reviews</button></a>
+<a href="/Orders.html" target="_parent"><button>Orders</button></a>
+<a href="/Logout.html" target="_parent"><button>Logout</button></a>
+
+<input type="text" id="search" name="search">
+<button type="search">Search</button><br><br>
+
+<table style = "width:50%">
+	<tr>
+		<th>Restaurant</th>
+		<th>Address</th>
+	</tr>
+	<tr>
+		<td>Oscar's</th>
+		<td>8234 Logan Ave N</td>
+		<td id ="more"></td>
+		<td>
+			<button onClick="showMore()">More</button>
+				<script>
+					function showMore(){
+						document.getElementById("more").innerHTML = "<p>Hot Dog Price: 3$ <button>Buy</button> <br> Chile Dog Price: 4$<button>Buy</button> <br>Soda Price: 1$<button>Buy</button> <br></p>"
+					}
+				</script>
+		</td>
+		
+	</tr>
+		<tr>
+		<td>Dogg Haus</td>
+		<td> 1633 W Wells St</td>
+		<td id ="more1"></td>
+		<td>
+			<button onClick="showMore1()">More</button>
+				<script>
+					function showMore1(){
+						document.getElementById("more1").innerHTML = "<p>Hot Dog Price: 3$ <button>Buy</button> <br> Chile Dog Price: 4$<button>Buy</button> <br>Soda Price: 1$<button>Buy</button> <br></p>"
+					}
+				</script>
+		</td>
+		
+	</tr>
+	
+</table>
+</body>
+</html>
