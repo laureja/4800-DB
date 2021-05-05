@@ -72,6 +72,10 @@ public class RestaurantController {
 		restaurant = new Restaurant();
 		
 		restaurant.setRestid(restid);
+<<<<<<< HEAD
+=======
+		restaurant.setRname(rname);
+>>>>>>> 1424890c26b2e640c4e88ce09377e5ef6b5fe530
 		
 		model.addAttribute("restaurant",restaurant);
 		model.addAttribute("message","Please update restaurant");
@@ -79,5 +83,6 @@ public class RestaurantController {
 		return "editRestaurant";
 		
 	}
+	
 	
 }

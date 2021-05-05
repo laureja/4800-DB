@@ -1,5 +1,5 @@
 package com.example.demo.domain;
-import java.math.BigDecimal;
+
 
 public class Restaurant {
 	
@@ -15,14 +15,14 @@ public class Restaurant {
 	String state;
 	int zip;
 	String pricerange;
-	boolean deliveryflag;
-	boolean outdoorseatingflag;
+	String deliveryflag;
+	String outdoorseatingflag;
 	
 	public Restaurant() {
 		
 	}
 	
-	public Restaurant(int restid,String rname,String phone,String email,String hours,String diningtype,int streetno,String streetname,String city,String state,int zip,String pricerange,boolean deliveryflag,boolean outdoorseatingflag) {
+	public Restaurant(int restid,String rname,String phone,String email,String hours,String diningtype,int streetno,String streetname,String city,String state,int zip,String pricerange,String deliveryflag,String outdoorseatingflag) {
 		super();
 		this.restid = restid;
 		this.rname = rname;
@@ -136,19 +136,19 @@ public class Restaurant {
 		this.pricerange = pricerange;
 	}
 
-	public boolean isDeliveryflag() {
+	public String getDeliveryflag() {
 		return deliveryflag;
 	}
 
-	public void setDeliveryflag(boolean deliveryflag) {
+	public void setDeliveryflag(String deliveryflag) {
 		this.deliveryflag = deliveryflag;
 	}
 
-	public boolean isOutdoorseatingflag() {
+	public String getOutdoorseatingflag() {
 		return outdoorseatingflag;
 	}
 
-	public void setOutdoorseatingflag(boolean outdoorseatingflag) {
+	public void setOutdoorseatingflag(String outdoorseatingflag) {
 		this.outdoorseatingflag = outdoorseatingflag;
 	}
 
