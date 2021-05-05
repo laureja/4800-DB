@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login Form</title>
+    <link rel="stylesheet" type="text/css" href="css/example.css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>    
+
+<span th:text="${message}" />
+
+<p>
+<center>
+<font size=5><font color =blue>
+Welcome to the Online Restaurant Advisor Database System</font></p>
+<P>
+<form action="#" th:action="@{/login}" th:object="${user}" method="post">
+<table border=1>
+<tr>
+<td><b>Email:</b></td>
+<td><INPUT TYPE="text" th:field="*{user}" /></td>
+</tr>
+<tr>
+<td><b>Password:</b></td>
+<td><INPUT TYPE="password" th:field="*{password}"/></td>
+</tr>
+</table>
+
+<INPUT TYPE="submit" value="Proceed" name="Proceed">  <INPUT TYPE="reset" value="clear" name="Clear">
+<P>
+</font><font size="4">
+First time user , sign in <A HREF="NewCustomer.html">here.</A>
+</font>
+</form>
+</center>
+</body>
+</html>
+

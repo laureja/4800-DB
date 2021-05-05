@@ -18,6 +18,7 @@ public interface CustomerMapper {
 	@Update("update RESTAURANT_CUSTOMER set fname=#{fname},minit=#{minit},lname=#{lname},phone=#{phone},password=#{password},streetno=#{streetno},streetname=#{streetname},city=#{city},state=#{state},zip=#{zip} where email=#{email}")
 	void saveCustomer(Customer customer);
 	
-	//@Insert("")
+	@Insert("insert RESTAURANT_CUSTOMER (email,fname,minit,lname,phone,password,streetno,streetname,city,state,zip) values(#{email},#{fname},#{minit},#{lname},#{phone},#{password},#{streetno},#{streetname},#{city},#{state},#{zip})")
+	void insertCustomer(Customer customer);
 
 }
