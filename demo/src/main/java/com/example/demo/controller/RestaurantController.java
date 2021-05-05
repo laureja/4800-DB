@@ -66,13 +66,13 @@ public class RestaurantController {
 	}
 	
 	@RequestMapping(value = "/editRestaurant/{restid}", method = RequestMethod.GET)
-	public String editRestaurant(@PathVariable int restid,@PathVariable String rname, @ModelAttribute Restaurant restaurant, Model model) {
+	public String editRestaurant(@PathVariable int restid, @ModelAttribute Restaurant restaurant, Model model) {
 		System.out.println("I am in editRestaurant inside Restaurant Controller");
 		
 		restaurant = new Restaurant();
 		
 		restaurant.setRestid(restid);
-		restaurant.setRname(rname);
+		//restaurant.setRname(rname);
 		
 		model.addAttribute("restaurant",restaurant);
 		model.addAttribute("message","Please update restaurant");
@@ -80,5 +80,6 @@ public class RestaurantController {
 		return "editRestaurant";
 		
 	}
+	
 	
 }

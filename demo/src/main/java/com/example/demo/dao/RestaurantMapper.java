@@ -17,6 +17,7 @@ public interface RestaurantMapper {
 	@Update("update RESTAURANT set rname=#{rname},phone=#{phone},email=#{email},hours=#{hours},diningtype=#{diningtype},streetno=#{streetno},streetname=#{streetname},city=#{city},state=#{state},zip=#{zip},pricerange=#{pricerange},deliveryflag=#{deliveryflag},outdoorseatingflag=#{outdoorseatingflag} where restid=#{restid}")
 	void saveRestaurant(Restaurant restaurant);
 	
+	
 	@Insert("insert RESTAURANT (restid,rname,phone,email,hours,diningtype,streetno,streetname,city,state,zip,pricerange,deliveryflag,outdoorseatingflag) values(#{restid},#{rname},#{phone},#{email},#{hours},#{diningtype},#{streetno},#{streetname},#{city},#{state},#{zip},#{pricerange},#{deliveryflag},#{outdoorseatingflag})")
 	void insertRestaurant(Restaurant restaurant);
 }
