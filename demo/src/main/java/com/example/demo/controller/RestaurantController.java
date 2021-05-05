@@ -91,7 +91,7 @@ public class RestaurantController {
 	}
 	
 	@RequestMapping(value = "/reviews", method = RequestMethod.GET)
-	public String displayReviews(@ModelAttribute Restaurant restaurant, Model model) {
+	public String viewReviews(@ModelAttribute Restaurant restaurant, Model model) {
 		System.out.println("I am in reviews inside Restaurant Controller");
 		
 		//model.addAttribute("restaurant", restaurant);
