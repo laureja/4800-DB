@@ -80,5 +80,43 @@ public class RestaurantController {
 		
 	}
 	
+	@RequestMapping(value = "/homeScreen", method = RequestMethod.GET)
+	public String home(@ModelAttribute Restaurant restaurant, Model model) {
+		System.out.println("I am in homeScreen inside Restaurant Controller");
+		
+		//model.addAttribute("restaurant", restaurant);
+		
+		return "homeScreen";
+		
+	}
 	
+	@RequestMapping(value = "/reviews", method = RequestMethod.GET)
+	public String displayReviews(@ModelAttribute Restaurant restaurant, Model model) {
+		System.out.println("I am in reviews inside Restaurant Controller");
+		
+		//model.addAttribute("restaurant", restaurant);
+		
+		return "reviews";
+		
+	}
+	
+	@RequestMapping(value = "/Orders", method = RequestMethod.GET)
+	public String displayOrders(@ModelAttribute Restaurant restaurant, Model model) {
+		System.out.println("I am in Orders inside Restaurant Controller");
+		
+		//model.addAttribute("restaurant", restaurant);
+		
+		return "Orders";
+		
+	}
+	
+	@RequestMapping(value = "/Logout", method = RequestMethod.GET)
+	public String displayLogout(@ModelAttribute Restaurant restaurant, Model model) {
+		System.out.println("I am in Logout inside Restaurant Controller");
+		
+		//model.addAttribute("restaurant", restaurant);
+		
+		return "Logout";
+		
+	}
 }
