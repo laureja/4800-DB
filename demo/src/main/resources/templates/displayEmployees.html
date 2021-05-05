@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Display Employees</title>
+<link rel="stylesheet" type="text/css" href="css/example.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+	<h1>Employee List</h1>
+
+	<table class="prettytable">
+		<tr>
+			<th>SSN</th>
+			<th>FName</th>
+			<th>LName</th>
+			<th>Salary</th>
+		</tr>
+
+		<tr th:each="employee : ${empList}">
+			<td th:text="${employee.ssn}"></td>
+			<td th:text="${employee.fname}"></td>
+			<td th:text="${employee.lname}"></td>
+			
+			<td th:text="${employee.salary}"></td>
+			
+			
+			<td>
+    			<span th:if="${employee.salary >= 40000}">High Salary</span>
+    			<span th:unless="${employee.salary >= 40000}">Medium Salary</span>
+			</td>
+
+			<td><a th:href="@{/editEmployee/{id}(id=${employee.ssn})}">Edit Employee</a>
+			</td>
+
+		</tr>
+
+
+	</table>
+
+
+
+</body>
+</html>

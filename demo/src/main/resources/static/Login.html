@@ -1,30 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="css/example.css" />
+
 <meta charset="ISO-8859-1">
-<title>Login Page</title>
+<title>Profile Page</title>
 </head>
 <body>
-<center>
-<h2>Restaurant Advisor Login</h2>
 
-<!-- form action="/homeScreen.html -->
+<p> A simple login page</p>
+
 <form action="userLogin" method="post">
-  <label for="uname">Username:</label><br>
-  <input type="text" id="uname" name="uname" value=""><br>
-  <label for="pword">Password:</label><br>
-  <input type="text" id="pword" name="pword" value=""><br><br>
-  <input type="submit" value="Submit">
-  <input type="reset" value="Clear">
+
+<table class="prettytable">
+<tr> 
+<td> Please enter your user name : </td>
+<td> <input type="text" id="userName" name="userName" > </td>
+</tr>
+
+<tr> 
+<td> Please enter your password : </td>
+<td> <input type="password" id="password" name="password" value=""> </td>
+</tr>
+
+<tr> 
+<td>   <input type="submit" value="Submit Button" /> </td>
+<td> <input type="reset" value="Reset Values" /> </td>
+</tr>
+
+
+</table>
+
 </form>
-
-<h3>New User? Register Below</h3>
-
-<form action="/Registration.html">
-    <input type="submit" value="Registration"/>
-</form>
-
-</center>
 
 </body>
 </html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="css/example.css" />
+
+<meta charset="ISO-8859-1">
+<title>Profile Page</title>
+</head>
+<body>
+
+<p> A simple profile page</p>
+
+<form action="Profile" method="get">
+
+<table class="prettytable">
+<tr> 
+<td> Please enter your first name : </td>
+<td> <input type="text" id="fname" name="fname" > </td>
+</tr>
+
+<tr> 
+<td> Please enter your last name : </td>
+<td> <input type="text" id="lname" name="lname" value=""> </td>
+</tr>
+
+
+<tr> 
+<td> Gender : </td>
+<td>  
+
+<input type="radio" id="male" name="gender" value="male"/> Male <br/>
+  <input type="radio" id="female" name="gender" value="female"/>Female<br/>
+  <input type="radio" id="other" name="gender" value="other"/>Other
+
+</td>
+</tr>
+
+<tr> 
+	<td> Date of Birth : </td>
+	<td>  
+ 		<input type="date" id="birthday" name="birthday">
+	</td>
+</tr>
+
+<tr> 
+<td> Promotional Communication Preferences : </td>
+<td>  
+
+<input type="radio" id="yes" name="commn" value="yes"/> Yes <br/>
+<input type="radio" id="no" name="commn" value="no"/>No<br/>
+
+
+</td>
+</tr>
+
+<tr> 
+<td> How would you like to receive promotional material from us : </td>
+<td>
+  <input type="checkbox" id="email" name="email" value="email"/>
+  Email<br/>
+  <input type="checkbox" id="phone" name="phone" value="phone"/>
+  Phone<br/>
+  <input type="checkbox" id="surfacemail" name="surfacemail" value="surfacemail" />
+  Surface Mail
+</td>
+</tr>
+
+
+<tr> 
+<td>   <input type="submit" value="Submit Button" /> </td>
+<td> <input type="reset" value="Reset Values" /> </td>
+</tr>
+
+
+</table>
+
+</form>
+
+</body>
+</html>

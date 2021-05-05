@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Restaurant</title>
+    <link rel="stylesheet" type="text/css" href="css/example.css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>    
+
+<span th:text="${message}" /> 
+
+<br/> 
+
+<form action="" th:action="@{/saveRestaurant}" th:object="${restaurant}" method="post">
+
+ <table class = "prettytable" border="1">
+        <tr>
+            <td>RestId :</td>
+            <td><input type="text" th:field="*{restid}" /></td>
+        </tr>        
+        <tr>
+            <td>Restaurant Name :</td>
+            <td><input type="text" th:field="*{rname}" /></td>
+        </tr>
+        <tr>
+            <td>Phone :</td>
+            <td><input type="text" th:field="*{phone}" /></td>
+        </tr>
+        <tr>
+            <td>Email :</td>
+            <td><input type="text" th:field="*{email}" /></td>
+        </tr>
+        <tr>
+            <td>Hours :</td>
+            <td><input type="text" th:field="*{hours}" /></td>
+        </tr>
+        <tr>
+            <td>Dining Type :</td>
+            <td><input type="text" th:field="*{diningtype}" /></td>
+        </tr>
+        <tr>
+            <td>Street Number :</td>
+            <td><input type="text" th:field="*{streetno}" /></td>
+        </tr>
+        <tr>
+            <td>Street Name :</td>
+            <td><input type="text" th:field="*{streetname}" /></td>
+        </tr>
+        <tr>
+            <td>City :</td>
+            <td><input type="text" th:field="*{city}" /></td>
+        </tr>
+        <tr>
+            <td>State :</td>
+            <td><input type="text" th:field="*{state}" /></td>
+        </tr>
+        <tr>
+            <td>Zipcode :</td>
+            <td><input type="text" th:field="*{zip}" /></td>
+        </tr>
+        <tr>
+            <td>Price Range :</td>
+            <td><input type="text" th:field="*{pricerange}" /></td>
+        </tr>
+        <tr>
+            <td>Delivery Flag :</td>
+            <td><input type="text" th:field="*{deliveryflag}" /></td>
+        </tr>
+        <tr>
+            <td>Outdoor Seating Flag :</td>
+            <td><input type="text" th:field="*{outdoorseatingflag}" /></td>
+        </tr>
+        
+              
+        
+        <tr>
+            <td><input type="reset" value="Reset"/></td>
+            <td><input type="submit" value="Submit" /></td>
+        </tr>
+        
+  </table>
+
+
+
+
+</form>   
+    
+</body>
+</html>

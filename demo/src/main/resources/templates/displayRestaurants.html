@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Display Restaurants</title>
+<link rel="stylesheet" type="text/css" href="css/example.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+	<h1>Restaurant List</h1>
+
+	<table class="prettytable">
+		<tr>
+			<th>RestId</th> 
+			<th>RName</th>
+			<th>Phone</th>
+			<th>Email</th>
+			<th>hours</th>
+			<th>DiningType</th>
+			<th>StreetNo</th>
+			<th>StreetName</th>
+			<th>City</th>
+			<th>State</th>
+			<th>Zip</th>
+			<th>PriceRange</th>
+			<th>DeliveryFlag</th>
+			<th>OutdoorSeatingFlag</th>
+		</tr>
+
+		<tr th:each="restaurant : ${restaurantList}">
+			<td th:text="${restaurant.restid}"></td>
+			<td th:text="${restaurant.rname}"></td>
+			<td th:text="${restaurant.phone}"></td>
+			<td th:text="${restaurant.email}"></td>
+			<td th:text="${restaurant.hours}"></td>
+			<td th:text="${restaurant.diningtype}"></td>
+			<td th:text="${restaurant.streetno}"></td>
+			<td th:text="${restaurant.streetname}"></td>
+			<td th:text="${restaurant.city}"></td>
+			<td th:text="${restaurant.state}"></td>
+			<td th:text="${restaurant.zip}"></td>
+			<td th:text="${restaurant.pricerange}"></td>
+			<td th:text="${restaurant.deliveryflag}"></td>
+			<td th:text="${restaurant.outdoorseatingflag}"></td>
+
+			<td><a th:href="@{/editRestaurant/{id}(id=${restaurant.restid})}">Edit Restaurant</a>
+			</td>
+
+		</tr>
+
+
+	</table>
+
+
+
+</body>
+</html>
