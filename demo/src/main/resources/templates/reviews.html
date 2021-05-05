@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Restaurant Advisor</title>
 </head>
@@ -13,25 +13,33 @@
 <a href="/Logout.html" target="_parent"><button>Logout</button></a>
 
 <input type="text" id="search" name="search">
-<button type="search">Search</button><br>
-
-<p><center><b>Write a Review</b></center></p>
+<button type="search">Search</button><br><br>
 
 <div style="text-align:center;">
-	<label for="name">Name:</label><br>
-	<input type="text" id="name" name="name">
-</div>
+	<p><b>Reviews</b></p>
+	<a href="/addReview.html" target="_parent"><button>Add Review</button></a>
 
-<div style="text-align:center;">
-	<label for="rating">Rating:</label><br>
-	<input type="text" id="rating" name="rating">
-</div>
+</div><br>
 
-<div style="text-align:center;">
-	<label for="description">Description:</label><br>
-	<textarea id="description" name="description" rows="10" cols="50">
-	</textarea>
-</div>
-
+<table style="width:50%">
+	<tr>
+		<th>Restaurant</th>
+		<th>Name</th>
+		<th>Description</th>
+		<th>Rating</th>
+	</tr>
+	<tr>
+		<td>Oscar's</td>
+		<td>M.Stark</td>
+		<td>It was really good!</td>
+		<td>4.5</td>
+	</tr>
+	<tr>
+		<td>Dog Haus</td>
+		<td>J.Laurensen</td>
+		<td>It's alright, but I definitely had worse hotdogs.</td>
+		<td>3</td>
+	</tr>
+</table>
 </body>
 <html>

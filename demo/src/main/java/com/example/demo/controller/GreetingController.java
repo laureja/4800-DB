@@ -57,7 +57,7 @@ public class GreetingController {
 				
 				session.setAttribute("user", userName);
 				
-				viewPage = "loginResults";
+				viewPage = "homeScreen";
 			} else {
 				session.invalidate();
 				message = "invalid password";

@@ -6,30 +6,37 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
+<h1><center>Restaurant Advisor</center></h1>
+<a href="/homeScreen.html" target="_parent"><button>Home</button></a>
+<a th:href="@{/displayRestaurants}" target="_parent"><button>Restaurants</button></a>
+<a th:href="@{/reviews}" target="_parent"><button>Reviews</button></a>
+<a href="/Orders.html" target="_parent"><button>Orders</button></a>
+<a href="/Logout.html" target="_parent"><button>Logout</button></a>
+
+<input type="text" id="search" name="search">
+<button type="search">Search</button><br><br>
 
 	<h1>Restaurant List</h1>
 
 	<table class="prettytable">
-		<tr>
-			<th>RestId</th> 
-			<th>RName</th>
+		<tr> 
+			<th>Name</th>
 			<th>Phone</th>
 			<th>Email</th>
 			<th>hours</th>
-			<th>DiningType</th>
-			<th>StreetNo</th>
-			<th>StreetName</th>
+			<th>Dining Type</th>
+			<th>Street</th>
+			<th>Street Name</th>
 			<th>City</th>
 			<th>State</th>
 			<th>Zip</th>
-			<th>PriceRange</th>
-			<th>DeliveryFlag</th>
-			<th>OutdoorSeatingFlag</th>
+			<th>Price Range</th>
+			<th>Delivery</th>
+			<th>Outdoor Seating</th>
 		</tr>
 
 		<tr th:each="restaurant : ${restaurantList}">
-			<td th:text="${restaurant.restid}"></td>
-			<td th:text="${restaurant.rname}"></td>
+			<td><a th:href="@{/editRestaurant/{id}(id=${restaurant.restid})}" th:text="${restaurant.rname}" target="_blank"></a></td>
 			<td th:text="${restaurant.phone}"></td>
 			<td th:text="${restaurant.email}"></td>
 			<td th:text="${restaurant.hours}"></td>
@@ -42,9 +49,6 @@
 			<td th:text="${restaurant.pricerange}"></td>
 			<td th:text="${restaurant.deliveryflag}"></td>
 			<td th:text="${restaurant.outdoorseatingflag}"></td>
-
-			<td><a th:href="@{/editRestaurant/{id}(id=${restaurant.restid})}">Edit Restaurant</a>
-			</td>
 
 		</tr>
 

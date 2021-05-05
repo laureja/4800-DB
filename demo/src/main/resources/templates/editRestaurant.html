@@ -1,89 +1,53 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Edit Restaurant</title>
-    <link rel="stylesheet" type="text/css" href="css/example.css" />
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Restaurant Info</title>
+<link rel="stylesheet" type="text/css" href="css/example.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>    
-
-<span th:text="${message}" /> 
+ 
 
 <br/> 
 
-<form action="" th:action="@{/saveRestaurant}" th:object="${restaurant}" method="post">
+<h1>Restaurant List</h1>
 
- <table class = "prettytable" border="1">
-        <tr>
-            <td>RestId :</td>
-            <td><input type="text" th:field="*{restid}" /></td>
-        </tr>        
-        <tr>
-            <td>Restaurant Name :</td>
-            <td><input type="text" th:field="*{rname}" /></td>
-        </tr>
-        <tr>
-            <td>Phone :</td>
-            <td><input type="text" th:field="*{phone}" /></td>
-        </tr>
-        <tr>
-            <td>Email :</td>
-            <td><input type="text" th:field="*{email}" /></td>
-        </tr>
-        <tr>
-            <td>Hours :</td>
-            <td><input type="text" th:field="*{hours}" /></td>
-        </tr>
-        <tr>
-            <td>Dining Type :</td>
-            <td><input type="text" th:field="*{diningtype}" /></td>
-        </tr>
-        <tr>
-            <td>Street Number :</td>
-            <td><input type="text" th:field="*{streetno}" /></td>
-        </tr>
-        <tr>
-            <td>Street Name :</td>
-            <td><input type="text" th:field="*{streetname}" /></td>
-        </tr>
-        <tr>
-            <td>City :</td>
-            <td><input type="text" th:field="*{city}" /></td>
-        </tr>
-        <tr>
-            <td>State :</td>
-            <td><input type="text" th:field="*{state}" /></td>
-        </tr>
-        <tr>
-            <td>Zipcode :</td>
-            <td><input type="text" th:field="*{zip}" /></td>
-        </tr>
-        <tr>
-            <td>Price Range :</td>
-            <td><input type="text" th:field="*{pricerange}" /></td>
-        </tr>
-        <tr>
-            <td>Delivery Flag :</td>
-            <td><input type="text" th:field="*{deliveryflag}" /></td>
-        </tr>
-        <tr>
-            <td>Outdoor Seating Flag :</td>
-            <td><input type="text" th:field="*{outdoorseatingflag}" /></td>
-        </tr>
-        
-              
-        
-        <tr>
-            <td><input type="reset" value="Reset"/></td>
-            <td><input type="submit" value="Submit" /></td>
-        </tr>
-        
-  </table>
+	<table class="prettytable1">
+		<tr> 
+			<th>Name</th>
+			<th>Phone</th>
+			<th>Email</th>
+			<th>hours</th>
+			<th>Dining Type</th>
+			<th>Address</th>
+			<th>Street Name</th>
+			<th>City</th>
+			<th>State</th>
+			<th>Zip</th>
+			<th>Price Range</th>
+			<th>Delivery</th>
+			<th>Outdoor Seating</th>
+		</tr>
+
+		<tr th:id="restaurant : ${restaurantList}">
+			<td th:text="${restaurant.rname}"></td>
+			<td th:text="${restaurant.phone}"></td>
+			<td th:text="${restaurant.email}"></td>
+			<td th:text="${restaurant.hours}"></td>
+			<td th:text="${restaurant.diningtype}"></td>
+			<td th:text="${restaurant.streetno}"></td>
+			<td th:text="${restaurant.streetname}"></td>
+			<td th:text="${restaurant.city}"></td>
+			<td th:text="${restaurant.state}"></td>
+			<td th:text="${restaurant.zip}"></td>
+			<td th:text="${restaurant.pricerange}"></td>
+			<td th:text="${restaurant.deliveryflag}"></td>
+			<td th:text="${restaurant.outdoorseatingflag}"></td>
+
+		</tr>
 
 
-
-
-</form>   
+	</table>
     
 </body>
 </html>
