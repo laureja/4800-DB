@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Display Reviews</title>
+<link rel="stylesheet" type="text/css" href="css/example.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+	<h1>Review List</h1>
+
+	<table class="prettytable">
+		<tr>
+			<th>Review Id</th>
+			<th>Customer Email</th>
+			<th>Restaurant Id</th>
+			<th>Review Title</th>
+			<th>Review Description</th>
+			<th>Review Date</th>
+			<th>Rating</th>
+		</tr>
+
+		<tr th:each="review : ${reviewList}">
+			<td th:text="${review.reviewid}"></td>
+			<td th:text="${review.custemail}"></td>
+			<td th:text="${review.restid}"></td>
+			<td th:text="${review.reviewtitle}"></td>
+			<td th:text="${review.reviewdescr}"></td>
+			<td th:text="${review.reviewdate}"></td>
+			<td th:text="${review.rating}"></td>
+
+		</tr>
+
+
+	</table>
+
+
+
+</body>
+</html>

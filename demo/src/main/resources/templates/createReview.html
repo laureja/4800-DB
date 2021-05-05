@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login Form</title>
+    <link rel="stylesheet" type="text/css" href="css/example.css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>    
+
+<span th:text="${message}" />
+
+<form action="#" th:action="@{/createReviewPost}" th:object="${review}" method="post">
+    <table class = "prettytable" border="1">
+        <tr>
+            <td>Review Id</td>
+            <td><input type="text" th:field="*{reviewid}" /></td>
+        </tr>
+         <tr>
+            <td>Email :</td>
+            <td><input type="text" th:field="*{custemail}" /></td>
+        </tr>
+         <tr>
+            <td>Restaurant Id :</td>
+            <td><input type="text" th:field="*{restid}" /></td>
+        </tr>
+         <tr>
+            <td>Review Title :</td>
+            <td><input type="text" th:field="*{reviewtitle}" /></td>
+        </tr>
+        <tr>
+            <td>Review description :</td>
+            <td><input type="text" th:field="*{reviewdescr}" /></td>
+        </tr>
+         <tr>
+            <td>Rating :</td>
+            <td><input type="text" th:field="*{rating}" /></td>
+        </tr>
+        
+        <tr>
+            <td><input type="submit" value="Submit" /></td>
+        </tr>
+    </table>
+</form>   
+    
+</body>
+</html>
