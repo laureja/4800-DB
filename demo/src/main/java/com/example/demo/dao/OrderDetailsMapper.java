@@ -8,10 +8,8 @@ import org.apache.ibatis.annotations.Update;
 
 import com.example.demo.domain.OrderDetails;
 
-<<<<<<< HEAD
-=======
+
 @Mapper
->>>>>>> Mapping-Branch
 public interface OrderDetailsMapper {
 	
 	@Select("SELECT ONO,FOODNAME,RESTID,QTY FROM RESTAURANT_ODETAILS")

@@ -17,12 +17,8 @@ public interface MenuMapper {
 	@Update("update MENU set price=#{price} where restid=#{restid} AND foodname=#{foodname}")
 	void saveMenu(Menu menu);
 	
-<<<<<<< HEAD
-	@Insert("insert Menu (restid,foodname,price) values(#{restid},#{foodname),#{price})")
-=======
 	@Insert("insert Menu (restid,foodname,price) values(#{restid},#{foodname},#{price})")
->>>>>>> Mapping-Branch
-	void insertMenu(Menu menu);
+	void InsertMenu(Menu menu);
 	
 	
 

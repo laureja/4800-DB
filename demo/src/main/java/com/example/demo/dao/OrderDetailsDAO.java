@@ -13,11 +13,8 @@ public class OrderDetailsDAO {
 	@Autowired
 	private OrderDetailsMapper orderDetailsMapper;
 	
-<<<<<<< HEAD
-	public List<OrderDetails> getOrderDetails() {
-=======
+
 	public List<OrderDetails> getOrderDetailsList() {
->>>>>>> Mapping-Branch
 		List<OrderDetails> orderDetailsList =  new ArrayList<OrderDetails>();
 		orderDetailsList = orderDetailsMapper.getOrderDetails();
 		return orderDetailsList;

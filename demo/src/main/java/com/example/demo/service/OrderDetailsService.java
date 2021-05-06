@@ -12,12 +12,8 @@ public class OrderDetailsService {
 	@Autowired
 	OrderDetailsDAO orderDetailsDAO;
 	
-<<<<<<< HEAD
-	public List<OrderDetails> getOrderDetails() {
-		return orderDetailsDAO.getOrderDetails();
-=======
 	public List<OrderDetails> getOrderDetailsList() {
 		return orderDetailsDAO.getOrderDetailsList();
->>>>>>> Mapping-Branch
+
 	}
 }
