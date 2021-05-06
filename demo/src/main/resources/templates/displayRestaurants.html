@@ -21,7 +21,7 @@
 	<table class="prettytable">
 		<tr> 
 			<th>Name</th>
-			<th>Phone</th>
+<!--		<th>Phone</th>
 			<th>Email</th>
 			<th>hours</th>
 			<th>Dining Type</th>
@@ -33,10 +33,12 @@
 			<th>Price Range</th>
 			<th>Delivery</th>
 			<th>Outdoor Seating</th>
+-->
 		</tr>
 
 		<tr th:each="restaurant : ${restaurantList}">
 			<td><a th:href="@{/editRestaurant/{id}(id=${restaurant.restid})}" th:text="${restaurant.rname}" target="_blank"></a></td>
+<!--			
 			<td th:text="${restaurant.phone}"></td>
 			<td th:text="${restaurant.email}"></td>
 			<td th:text="${restaurant.hours}"></td>
@@ -49,7 +51,7 @@
 			<td th:text="${restaurant.pricerange}"></td>
 			<td th:text="${restaurant.deliveryflag}"></td>
 			<td th:text="${restaurant.outdoorseatingflag}"></td>
-
+-->
 		</tr>
 	</table>
 </body>
