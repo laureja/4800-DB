@@ -69,13 +69,15 @@ public class ReviewController {
 		
 	}
 	
-	@RequestMapping(value = "/createFormReview", method = RequestMethod.GET)
-	public String saveReview(@ModelAttribute Review review, Model model) {
+	@RequestMapping(value = "/createFormReview/{restid}", method = RequestMethod.GET)
+	public String saveReview(@PathVariable int restid, @ModelAttribute Review review, Model model) {
 		
 		System.out.println("I am in saveReview inside Review Controller");
 		
 		System.out.println("Employee details in saveEmployee"+review);
 		
+		review.setRestid(restid);
+		//model.addAttribute("restid",restid);
 		
 		model.addAttribute("review", review);
 		model.addAttribute("message","On creating");
@@ -85,22 +87,31 @@ public class ReviewController {
 	}
 	
 	@RequestMapping(value = "/displayReviews/{restid}", method = RequestMethod.GET)
-	public String editRestaurant(@PathVariable int restid, @ModelAttribute Review review, Model model) {
+	public String editRestaurant(@PathVariable int restid, @ModelAttribute Review review, @ModelAttribute Restaurant restaurant, Model model) {
 		System.out.println("I am in editRestaurant inside Restaurant Controller");
 		
 		review = new Review();
+		
+		restaurant = new Restaurant();
+		restaurant.setRestid(restid);
+		
+		restaurant = restaurantService.getRestaurant(restaurant);
+		
+		
 		
 		
 		review.setRestid(restid);
 
 		List<Review> reviewList = new ArrayList<Review>();
 
-		reviewList = reviewService.getReviewList();
+		reviewList = reviewService.getReviewList(review);
 
 		for (Review r : reviewList)
 		System.out.println(r);
 
 		model.addAttribute("reviewList", reviewList);
+		model.addAttribute("restaurant", restaurant);
+
 		
 		model.addAttribute("review",review);
 		model.addAttribute("message","Please update restaurant");

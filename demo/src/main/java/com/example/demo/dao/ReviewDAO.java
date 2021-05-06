@@ -15,10 +15,10 @@ public class ReviewDAO {
 	@Autowired
 	private ReviewMapper reviewMapper;
 	
-	public List<Review> getReviewList(){
+	public List<Review> getReviewList(Review review){
 		
 		List<Review> reviewList = new ArrayList<Review>();
-		reviewList = reviewMapper.getReviewList();
+		reviewList = reviewMapper.getReviewList(review);
 		return reviewList;
 	}
 	

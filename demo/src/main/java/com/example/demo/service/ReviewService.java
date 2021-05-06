@@ -14,10 +14,12 @@ public class ReviewService {
 	@Autowired
 	ReviewDAO reviewDAO;
 	
-	public List<Review> getReviewList() {
+	public List<Review> getReviewList(Review review) {
 		
-		return reviewDAO.getReviewList();
+		return reviewDAO.getReviewList(review);
 	}
+	
+	
 	
 	public void saveReview(Review review) {
 		reviewDAO.saveReview(review);

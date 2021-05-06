@@ -12,8 +12,8 @@ import com.example.demo.domain.Review;
 @Mapper
 public interface ReviewMapper {
 	
-	@Select("SELECT REVIEWID,CUSTEMAIL,RESTID,REVIEWTITLE,REVIEWDESCR,REVIEWDATE,RATING FROM CUST_REVIEW")
-	List<Review> getReviewList();
+	@Select("SELECT REVIEWID,CUSTEMAIL,RESTID,REVIEWTITLE,REVIEWDESCR,REVIEWDATE,RATING FROM CUST_REVIEW WHERE RESTID =#{restid}")
+	List<Review> getReviewList(Review review);
 	
 	@Update("update CUST_REVIEW set reviewid=#{reviewid},custemail=#{custemail},restid=#{restid},reviewtitle=#{reviewtitle},reviewdescr=#{reviewdescr},reviewdate=#{reviewdate},rating=#{rating} where reviewid=#{reviewid}")
 	void saveReview(Review review);
