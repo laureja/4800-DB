@@ -21,6 +21,14 @@ public class RestaurantDAO {
 		return restaurantList;
 	}
 	
+public Restaurant getRestaurant(Restaurant restaurant){
+		
+		//Restaurant restaurant = new Restaurant();
+		
+		restaurant = restaurantMapper.getRestaurant(restaurant);
+		return restaurant;
+	}
+	
 	public void saveRestaurant(Restaurant restaurant) {
 		restaurantMapper.saveRestaurant(restaurant);
 	}
