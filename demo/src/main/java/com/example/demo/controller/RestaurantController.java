@@ -49,6 +49,7 @@ public class RestaurantController {
 		
 	}
 	
+	
 	@RequestMapping(value = "/saveRestaurant", method = RequestMethod.POST)
 	public String saveRestaurant(@ModelAttribute Restaurant restaurant, Model model) {
 		
@@ -91,6 +92,8 @@ public class RestaurantController {
 		return "homeScreen";
 		
 	}
+	
+	
 	
 	@RequestMapping(value = "/reviews", method = RequestMethod.GET)
 	public String viewReviews(@ModelAttribute Restaurant restaurant, Model model) {
