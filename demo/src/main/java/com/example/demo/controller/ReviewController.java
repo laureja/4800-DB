@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.demo.domain.Review;
 import com.example.demo.domain.Review;
 import com.example.demo.domain.FormCommand;
+import com.example.demo.domain.Restaurant;
 import com.example.demo.service.RestaurantService;
 import com.example.demo.service.ReviewService;
 
@@ -28,26 +29,27 @@ public class ReviewController {
 	@Autowired
 	ReviewService reviewService;
 	
-	@RequestMapping(value = "/displayReviews", method = RequestMethod.GET)
+	@Autowired
+	RestaurantService restaurantService;
+	
+	@RequestMapping(value = "/ReviewRestaurants", method = RequestMethod.GET)
 	public String formExampleDisplay(HttpServletRequest request, Model model) {
-		System.out.println("I am in displayReview inside Restaurant Controller");
+		System.out.println("I am in displayResaurant inside Review Controller");
 		
 		HttpSession session = request.getSession(true);
+		String userName = session.getAttribute("user").toString();
 		
-		//String userName = session.getAttribute("user").toString();
-		
-		//System.out.println("userName from Session inside displayRestaurants :"+ userName);
 
-		List<Review> reviewList = new ArrayList<Review>();
+		List<Restaurant> restaurantList = new ArrayList<Restaurant>();
 		
-		reviewList = reviewService.getReviewList();
+		restaurantList = restaurantService.getRestaurantList();
 		
-		for (Review r : reviewList)
+		for (Restaurant r : restaurantList)
 			System.out.println(r);
 		
-		model.addAttribute("reviewList", reviewList);
+		model.addAttribute("restaurantList", restaurantList);
 		
-		return "displayReviews";
+		return "ReviewRestaurants";
 		
 	}
 	
@@ -67,13 +69,15 @@ public class ReviewController {
 		
 	}
 	
-	@RequestMapping(value = "/createFormReview", method = RequestMethod.GET)
-	public String saveReview(@ModelAttribute Review review, Model model) {
+	@RequestMapping(value = "/createFormReview/{restid}", method = RequestMethod.GET)
+	public String saveReview(@PathVariable int restid, @ModelAttribute Review review, Model model) {
 		
 		System.out.println("I am in saveReview inside Review Controller");
 		
 		System.out.println("Employee details in saveEmployee"+review);
 		
+		review.setRestid(restid);
+		//model.addAttribute("restid",restid);
 		
 		model.addAttribute("review", review);
 		model.addAttribute("message","On creating");
@@ -82,21 +86,42 @@ public class ReviewController {
 		
 	}
 	
-	@RequestMapping(value = "/editReview/{reviewid}", method = RequestMethod.GET)
-	public String editRestaurant(@PathVariable int reviewid, @ModelAttribute Review review, Model model) {
+	@RequestMapping(value = "/displayReviews/{restid}", method = RequestMethod.GET)
+	public String editRestaurant(@PathVariable int restid, @ModelAttribute Review review, @ModelAttribute Restaurant restaurant, Model model) {
 		System.out.println("I am in editRestaurant inside Restaurant Controller");
 		
 		review = new Review();
 		
-		review.setRestid(reviewid);
+		restaurant = new Restaurant();
+		restaurant.setRestid(restid);
+		
+		restaurant = restaurantService.getRestaurant(restaurant);
+		
+		
+		
+		
+		review.setRestid(restid);
+
+		List<Review> reviewList = new ArrayList<Review>();
+
+		reviewList = reviewService.getReviewList(review);
+
+		for (Review r : reviewList)
+		System.out.println(r);
+
+		model.addAttribute("reviewList", reviewList);
+		model.addAttribute("restaurant", restaurant);
 
 		
 		model.addAttribute("review",review);
 		model.addAttribute("message","Please update restaurant");
 		
-		return "editReview";
+		return "displayReviews";
 		
 	}
+	
+	
+	
 	
 	
 }
