@@ -14,6 +14,9 @@ public interface RestaurantMapper {
 	@Select("SELECT RESTID,RNAME,PHONE,EMAIL,HOURS,DININGTYPE,STREETNO,STREETNAME,CITY,STATE,ZIP,PRICERANGE,DELIVERYFLAG,OUTDOORSEATINGFLAG FROM RESTAURANT")
 	List<Restaurant> getRestaurantList();
 	
+	@Select("SELECT RESTID,RNAME,PHONE,EMAIL,HOURS,DININGTYPE,STREETNO,STREETNAME,CITY,STATE,ZIP,PRICERANGE,DELIVERYFLAG,OUTDOORSEATINGFLAG FROM RESTAURANT WHERE RESTID =#{restid}")
+	Restaurant getRestaurant(Restaurant restaurant);
+	
 	@Update("update RESTAURANT set rname=#{rname},phone=#{phone},email=#{email},hours=#{hours},diningtype=#{diningtype},streetno=#{streetno},streetname=#{streetname},city=#{city},state=#{state},zip=#{zip},pricerange=#{pricerange},deliveryflag=#{deliveryflag},outdoorseatingflag=#{outdoorseatingflag} where restid=#{restid}")
 	void saveRestaurant(Restaurant restaurant);
 	

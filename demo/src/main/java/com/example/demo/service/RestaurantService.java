@@ -18,6 +18,11 @@ public class RestaurantService {
 		return restaurantDAO.getRestaurantList();
 	}
 	
+	public Restaurant getRestaurant(Restaurant restaurant) {
+		
+		return restaurantDAO.getRestaurant(restaurant);
+	}
+	
 	public void saveRestaurant(Restaurant restaurant) {
 		restaurantDAO.saveRestaurant(restaurant);
 	}

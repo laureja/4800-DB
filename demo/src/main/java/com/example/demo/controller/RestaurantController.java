@@ -72,6 +72,8 @@ public class RestaurantController {
 		restaurant = new Restaurant();
 		
 		restaurant.setRestid(restid);
+		restaurant = restaurantService.getRestaurant(restaurant);
+		System.out.println(restaurant);
 		
 		model.addAttribute("restaurant",restaurant);
 		model.addAttribute("message","Please update restaurant");
