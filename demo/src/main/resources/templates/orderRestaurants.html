@@ -47,7 +47,10 @@
 
 		<tr th:each="restaurant : ${restaurantList}">
 			<td><a th:href="@{/displayMenu/{id}(id=${restaurant.restid})}" th:text="${restaurant.rname}" target="_self"></a></td>
+<<<<<<< Updated upstream
 						
+=======
+>>>>>>> Stashed changes
 			<td th:text="${restaurant.phone}"></td>
 			<td th:text="${restaurant.hours}"></td>
 			<td th:text="${restaurant.streetno}"></td>
