@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login Form</title>
+    <link rel="stylesheet" type="text/css" href="css/example.css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1><center>Restaurant Advisor</center></h1>
+<a th:href="@{/homeScreen}" target="_parent"><button>Home</button></a>
+<a th:href="@{/displayRestaurants}" target="_parent"><button>Restaurants</button></a>
+<a th:href="@{/ReviewRestaurant}" target="_parent"><button>Reviews</button></a>
+<a th:href="@{/orderRestaurants}" target="_parent"><button>Orders</button></a>
+<a th:href="@{/Logout}" target="_parent"><button>Logout</button></a>
+
+<input type="text" id="search" name="search">
+<button type="search">Search</button><br><br>    
+
+<span th:text="${message}" />
+
+<form action="#" th:action="@{/createOrderPost}" th:object="${formCommand}" method="post">
+   <table class="prettytable">
+		<tr> 
+			<th>Food</th>
+			<th>Price</th>
+			<th>Quantity</th>
+		</tr>
+
+		<tr th:each="menu : ${menuList}">
+						
+			<td th:text="${menu.foodname}"></td>
+			<td th:text="${menu.price}"></td>
+   			<td><select th:field="*{dropdownSelectedValue}">
+						<option th:each="dropdownValue: ${singleSelectAllValues}"
+							th:value="${dropdownValue}" th:text="${dropdownValue}"></option>
+				</select></td>
+				
+				
+
+			</tr>
+	</table>
+</form>   
+
+
+
+</body>
+</html>

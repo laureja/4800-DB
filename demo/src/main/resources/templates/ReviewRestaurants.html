@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<h1><center>Restaurant Advisor</center></h1>
+<h1><center>Reviews</center></h1>
 <a th:href="@{/homeScreen}" target="_parent"><button>Home</button></a>
 <a th:href="@{/displayRestaurants}" target="_parent"><button>Restaurants</button></a>
 <a th:href="@{/ReviewRestaurants}" target="_parent"><button>Reviews</button></a>
@@ -16,7 +16,7 @@
 <input type="text" id="search" name="search">
 <button type="search">Search</button><br><br>
 
-	<h1>Restaurant List</h1>
+	<h1>Review List</h1>
 
 	<table class="prettytable">
 		<tr> 
@@ -37,9 +37,8 @@
 		</tr>
 
 		<tr th:each="restaurant : ${restaurantList}">
-			<td><a th:href="@{/editRestaurant/{id}(id=${restaurant.restid})}" th:text="${restaurant.rname}" target="_blank"></a></td>
-<!--			
-			<td th:text="${restaurant.phone}"></td>
+			<td><a th:href="@{/displayReviews/{id}(id=${restaurant.restid})}" th:text="${restaurant.rname}" target="_self"></a></td>		
+<!--				<td th:text="${restaurant.phone}"></td>
 			<td th:text="${restaurant.email}"></td>
 			<td th:text="${restaurant.hours}"></td>
 			<td th:text="${restaurant.diningtype}"></td>

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Display Restaurants</title>
+<title>Order Restaurants</title>
 <link rel="stylesheet" type="text/css" href="css/example.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
@@ -21,7 +21,16 @@
 	<table class="prettytable">
 		<tr> 
 			<th>Name</th>
-<!--		<th>Phone</th>
+			<th>Phone</th>
+			<th>hours</th>
+			<th>Street</th>
+			<th>Street Name</th>
+			<th>City</th>
+			<th>State</th>
+			<th>Zip</th>
+
+<!--		<th>Name</th>
+			<th>Phone</th>
 			<th>Email</th>
 			<th>hours</th>
 			<th>Dining Type</th>
@@ -37,7 +46,15 @@
 		</tr>
 
 		<tr th:each="restaurant : ${restaurantList}">
-			<td><a th:href="@{/editRestaurant/{id}(id=${restaurant.restid})}" th:text="${restaurant.rname}" target="_blank"></a></td>
+			<td><a th:href="@{/displayMenu/{id}(id=${restaurant.restid})}" th:text="${restaurant.rname}" target="_self"></a></td>
+						
+			<td th:text="${restaurant.phone}"></td>
+			<td th:text="${restaurant.hours}"></td>
+			<td th:text="${restaurant.streetno}"></td>
+			<td th:text="${restaurant.streetname}"></td>
+			<td th:text="${restaurant.city}"></td>
+			<td th:text="${restaurant.state}"></td>
+			<td th:text="${restaurant.zip}"></td>
 <!--			
 			<td th:text="${restaurant.phone}"></td>
 			<td th:text="${restaurant.email}"></td>
