@@ -31,7 +31,7 @@ public class CustomerDAO {
 	}
 	
 	public Customer getCustomerEmail(Customer customer) {
-		customerMapper.getCustomerEmail(customer);
+		customer = customerMapper.getCustomerEmail(customer);
 		return customer;
 	}
 
