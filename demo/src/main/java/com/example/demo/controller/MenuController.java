@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -11,16 +12,20 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.domain.Menu;
 import com.example.demo.domain.Order;
+import com.example.demo.domain.OrderDetails;
 import com.example.demo.domain.Restaurant;
 import com.example.demo.domain.Review;
+import com.example.demo.domain.menuForm;
 import com.example.demo.domain.FormCommand;
 import com.example.demo.service.MenuService;
+import com.example.demo.service.OrderService;
 import com.example.demo.service.RestaurantService;
 
 @Controller
@@ -31,6 +36,9 @@ public class MenuController {
 	
 	@Autowired 
 	RestaurantService restaurantService;
+	
+	@Autowired 
+	OrderService orderService;
 	
 	@RequestMapping(value = "/displayMenu/{restid}", method = RequestMethod.GET)
 	public String editRestaurant(@PathVariable int restid, @ModelAttribute Restaurant restaurant, Model model) {
@@ -74,12 +82,14 @@ public class MenuController {
 	}
 	
 	@RequestMapping(value = "/createOrder/{restid}", method = RequestMethod.GET)
-	public String saveReview(@ModelAttribute FormCommand formCommand, @PathVariable int restid,  Model model) {
+	public String saveReview(@PathVariable int restid,  Model model) {
 		
 		System.out.println("I am in saveReview inside Review Controller");
-		formCommand = new FormCommand();
-		model.addAttribute("formCommand", formCommand);
+		menuForm orderForm = new menuForm();
+		model.addAttribute("menuForm", orderForm);
 		
+		FormCommand formCommand = new FormCommand();
+		model.addAttribute("formCommand",formCommand);
 	
 		Restaurant restaurant = new Restaurant();
 		
@@ -88,12 +98,21 @@ public class MenuController {
 		menuList = menuService.getMenuList(restaurant);
 		
 		
+		for (int i = 0; i <= menuList.size() - 1; i++) {
+			System.out.println(menuList.get(i).getFoodname());
+			OrderDetails o = new OrderDetails();
+			o.setFoodname(menuList.get(i).getFoodname());
+			o.setRestid(restid);
+			orderForm.addItem(o);
+		}
+		
+		System.out.println(orderForm.getOrderDetailsList());
 		
 		restaurantService.getRestaurant(restaurant);
-		Order order = new Order();
 		
 		System.out.println("Whyyyy"+ getSingleSelectAllValues());
 		model.addAttribute("singleSelectAllValues", getSingleSelectAllValues());
+		model.addAttribute("flags", getFlags());
 		model.addAttribute("menuList", menuList);
 		model.addAttribute("restaurant", restaurant);
 		model.addAttribute("message","On creating");
@@ -102,18 +121,48 @@ public class MenuController {
 		
 	}
 	
-	@RequestMapping(value = "/createOrderPost", method = RequestMethod.POST)
-	public String createReview(@ModelAttribute Review review, Model model) {
-		
+	@PostMapping(value = "/createOrderPost")
+	public String createReview(@ModelAttribute menuForm orderForm, Model model) {
+		Random rd = new Random();
+		int orderNum = rd.nextInt();
+		Order order = new Order();
+		order.setOno(orderNum);
+		if (orderForm.getFlag().equals("Pick-up"))
+		{
+			order.setOrderpickupflag('Y');
+			order.setOrderdeliveryflag('N');
+			order.setOrderdineinflag('N');
+		}
+		System.out.println("delivery flag" + orderForm.getFlag());
+		if (orderForm.getFlag().equals("Delivery"))
+		{
+			order.setOrderdeliveryflag('Y');
+			order.setOrderpickupflag('N');
+			order.setOrderdineinflag('N');
+		}
+		else
+		{
+			order.setOrderdineinflag('Y');
+			order.setOrderdeliveryflag('N');
+			order.setOrderpickupflag('N');
+		}
+		order.setCustemail("franklin@restaurantadvisor.com");
+		System.out.println("ORDER::" + order + "Form" + orderForm);
+		orderService.insertOrder(order);
+		for (int i = 0; i < orderForm.getOrderDetailsList().size() - 1; i++)
+		{
+			orderForm.getOrderDetailsList().get(i).setOno(orderNum);
+			orderService.insertOrderDetail(orderForm.getOrderDetailsList().get(i));
+		}
 		System.out.println("I am in saveReview inside Review Controller");
 		
-		System.out.println("Employee details in saveEmployee"+review);
+		System.out.println("Employee details in saveEmployee"+orderForm);
 		
 		
-		model.addAttribute("review", review);
+		model.addAttribute("menuForm", orderForm);
 		model.addAttribute("message","Update Successful");
 		
-		return "createReview";
+		return "createOrder";
 		
 	}
 	
@@ -134,6 +183,15 @@ public class MenuController {
 		
 
 		return singleSelectAllValues;
+	}
+	
+	private List<String> getFlags() {
+		List<String> flags = new ArrayList<String>();
+		flags.add("Delivery");
+		flags.add("Dine-in");
+		flags.add("Pick-up");
+
+		return flags;
 	}
 	
 	

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.example.demo.domain.OrderDetails;
+import com.example.demo.domain.Review;
 
 @Component
 public class OrderDetailsDAO {
@@ -18,5 +19,9 @@ public class OrderDetailsDAO {
 		List<OrderDetails> orderDetailsList =  new ArrayList<OrderDetails>();
 		orderDetailsList = orderDetailsMapper.getOrderDetails();
 		return orderDetailsList;
+	}
+	
+	public void insertOrderDetail(OrderDetails orderDetail) {
+		orderDetailsMapper.insertOrderDetail(orderDetail);
 	}
 }
