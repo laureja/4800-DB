@@ -51,16 +51,29 @@ public class GreetingController {
 	@RequestMapping(value = "/userLogin", method = RequestMethod.POST)
 	public String inputExamplePost(HttpServletRequest request, @ModelAttribute User user, @ModelAttribute Customer customer, @ModelAttribute Restaurant restaurant, Model model) {
 		
+		
+		
+		HttpSession session = request.getSession(true);
+		String viewPage = "", message = "";
 		Customer d =  customer;
 		
 		//d.setEmail(customer.getEmail());
 		
+		
+		
 		customer = customerService.getCustomerEmail(customer);
 		
+		if(customer == null) {
+			session.invalidate();
+			viewPage = "userLogin";
+			message = "wrong username";
+			user = new User();
+			model.addAttribute("message", message);
+			return viewPage;
+		}
 		
 		
 		
-		String viewPage = "", message = "";
 //		System.out.println("User Details :" + user);
 		String email = customer.getEmail();
 		String password = customer.getPassword();
@@ -68,7 +81,7 @@ public class GreetingController {
 		String email2 = d.getEmail();
 		String password2 = d.getPassword();
 		
-		HttpSession session = request.getSession(true);
+	
 		
 		System.out.println("This is D " + d);
 		System.out.println("user input " + customer);

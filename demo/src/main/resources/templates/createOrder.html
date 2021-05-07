@@ -29,7 +29,7 @@
 		  <tr th:each="detail, itemStat : *{orderDetailsList}">
 						
 			<td th:text="${detail.foodname}"></td>
-			<td><input type = "hidden" th:field="*{orderDetailsList[__${itemStat.index}__].foodname}" /><input type = "hidden" th:field="*{orderDetailsList[__${itemStat.index}__].restid}" /></td>
+			<td th:text=*{menu[__${itemStat.index}__].price}></td>
    			<td>
 <   			<select th:field="*{orderDetailsList[__${itemStat.index}__].qty}">
 						<option th:each="dropdownValue: ${singleSelectAllValues}"
@@ -38,7 +38,7 @@
 							</option>
 				</select>
 				</td>
-				
+				<td><input type = "hidden" th:field="*{orderDetailsList[__${itemStat.index}__].foodname}" /><input type = "hidden" th:field="*{orderDetailsList[__${itemStat.index}__].restid}" /></td>
 				
 
 			</tr>
