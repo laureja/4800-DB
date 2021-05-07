@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login Form</title>
+    <link rel="stylesheet" type="text/css" href="css/example.css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>    
+
+<span th:text="${message}" />
+
+<form action="#" th:action="@{/createOrderPost}" th:object="${formCommand}" method="post">
+   <table class="prettytable">
+		<tr> 
+			<th>Food</th>
+			<th>Price</th>
+			<th>Quantity</th>
+		</tr>
+
+		<tr th:each="menu : ${menuList}">
+						
+			<td th:text="${menu.foodname}"></td>
+			<td th:text="${menu.price}"></td>
+   			<td><select th:field="*{dropdownSelectedValue}">
+						<option th:each="dropdownValue: ${singleSelectAllValues}"
+							th:value="${dropdownValue}" th:text="${dropdownValue}"></option>
+				</select></td>
+				
+				
+
+			</tr>
+	</table>
+</form>   
+
+
+
+</body>
+</html>

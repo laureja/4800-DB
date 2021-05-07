@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.domain.FormCommand;
+import com.example.demo.domain.Restaurant;
 import com.example.demo.domain.User;
 
 @Controller
@@ -29,18 +30,19 @@ public class GreetingController {
 	}
 
 	@RequestMapping(value = "/userLogin", method = RequestMethod.GET)
-	public String userLogin(HttpServletRequest request, @ModelAttribute User user, Model model) {
+	public String userLogin(HttpServletRequest request, @ModelAttribute User user, @ModelAttribute Restaurant restaurant, Model model) {
 
 		String viewPage = "userLogin", message = "Please enter user name and password :";
 
 		model.addAttribute("user", user);
+		model.addAttribute("restaurant",restaurant);
 		model.addAttribute("message", message);
 
 		return viewPage;
 	}
 
 	@RequestMapping(value = "/userLogin", method = RequestMethod.POST)
-	public String inputExamplePost(HttpServletRequest request, @ModelAttribute User user, Model model) {
+	public String inputExamplePost(HttpServletRequest request, @ModelAttribute User user, @ModelAttribute Restaurant restaurant, Model model) {
 
 		String viewPage = "", message = "";
 
@@ -70,7 +72,8 @@ public class GreetingController {
 			message = "wrong username";
 			user = new User();
 		}
-
+		
+		model.addAttribute("restaurant",restaurant);
 		model.addAttribute("user", user);
 		model.addAttribute("message", message);
 

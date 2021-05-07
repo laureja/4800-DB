@@ -28,6 +28,14 @@ public Restaurant getRestaurant(Restaurant restaurant){
 		restaurant = restaurantMapper.getRestaurant(restaurant);
 		return restaurant;
 	}
+
+	public List<Restaurant> searchRestaurantList(Restaurant restaurant){
+	
+	List<Restaurant> restaurantList = new ArrayList<Restaurant>();
+	
+	restaurantList = restaurantMapper.searchRestaurantList(restaurant);
+	return restaurantList;
+}
 	
 	public void saveRestaurant(Restaurant restaurant) {
 		restaurantMapper.saveRestaurant(restaurant);

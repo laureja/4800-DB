@@ -87,8 +87,9 @@ public class ReviewController {
 	}
 	
 	@RequestMapping(value = "/displayReviews/{restid}", method = RequestMethod.GET)
-	public String editRestaurant(@PathVariable int restid, @ModelAttribute Review review, @ModelAttribute Restaurant restaurant, Model model) {
+	public String editRestaurant(HttpServletRequest request, @PathVariable int restid, @ModelAttribute Review review, @ModelAttribute Restaurant restaurant, Model model) {
 		System.out.println("I am in editRestaurant inside Restaurant Controller");
+		
 		
 		review = new Review();
 		

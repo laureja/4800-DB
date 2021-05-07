@@ -10,12 +10,20 @@
 <a th:href="@{/homeScreen}" target="_parent"><button>Home</button></a>
 <a th:href="@{/displayRestaurants}" target="_parent"><button>Restaurants</button></a>
 <a th:href="@{/ReviewRestaurants}" target="_parent"><button>Reviews</button></a>
-<a th:href="@{/Orders}" target="_parent"><button>Orders</button></a>
+<a th:href="@{/orderRestaurants}" target="_parent"><button>Orders</button></a>
 <a th:href="@{/Logout}" target="_parent"><button>Logout</button></a>
 
-<input type="text" id="search" name="search">
-<button type="search">Search</button><br>
-<label for="request">Select an option or perform a search</label>
 
+<form action="#" th:action="@{/searchRestaurants}" th:object="${restaurant}" method="post">
+      <input type="text" th:field="*{rname}"/>
+      <button type="submit">Submit</button>
+</form>
+
+
+<!-- 
+<input type="text" id="search" name="search">
+  <a th:href="@{/searchRestaurants/{search}"><button type="search">Search</button><br></a> 
+<label for="request">Select an option or perform a search</label>
+ -->
 </body>
 </html>

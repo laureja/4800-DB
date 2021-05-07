@@ -35,7 +35,7 @@ public class RestaurantController {
 		String userName = session.getAttribute("user").toString();
 		
 		System.out.println("userName from Session inside displayRestaurants :"+ userName);
-
+		
 		List<Restaurant> restaurantList = new ArrayList<Restaurant>();
 		
 		restaurantList = restaurantService.getRestaurantList();
@@ -80,6 +80,20 @@ public class RestaurantController {
 		model.addAttribute("message","Please update restaurant");
 		
 		return "editRestaurant";
+		
+	}
+	
+	@RequestMapping(value = "/searchRestaurants", method = RequestMethod.POST)
+	public String searchRestaurant(@ModelAttribute Restaurant restaurant, Model model) {
+		System.out.println("I am in searchRestaurant inside Restaurant Controller---->" + restaurant.getRname());
+		
+		List<Restaurant> restaurantList = new ArrayList<Restaurant>();
+		restaurantList = restaurantService.searchRestaurantList(restaurant);
+		System.out.println(restaurant);
+		
+		model.addAttribute("message","Please update restaurant");
+		model.addAttribute("restaurantList", restaurantList);
+		return "displayRestaurants";
 		
 	}
 	

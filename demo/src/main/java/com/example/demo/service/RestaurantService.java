@@ -26,5 +26,10 @@ public class RestaurantService {
 	public void saveRestaurant(Restaurant restaurant) {
 		restaurantDAO.saveRestaurant(restaurant);
 	}
+	
+	public List<Restaurant> searchRestaurantList(Restaurant restaurant) {
+		
+		return restaurantDAO.searchRestaurantList(restaurant);
+	}
 
 }
