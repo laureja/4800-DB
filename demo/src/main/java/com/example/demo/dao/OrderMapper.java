@@ -16,7 +16,7 @@ public interface OrderMapper {
 	@Update("update RESTAURANT_ORDER set custemail=#{custemail},orderdineinflag=#{orderdineinflag},orderdeliveryflag=#{orderdeliveryflag},orderpickupflag=#{orderpickupflag},orderpickupdate=#{orderpickupdate},orderdeliverydate=#{orderdeliverydate},orderdineinreceiveddate=#{orderdineinreceiveddate} where ono=#{ono}")
 	void saveOrder(Order order);
 	
-	@Insert("insert RESTAURANT_ORDER (ono,custemail,orderdineinflag,orderdeliveryflag,orderpickupflag,orderpickupdate,orderdeliverydate,orderdineinreceiveddate) values(#{ono},#{custemail},#{orderdineinflag},#{orderdeliveryflag},#{orderpickupflag},#{orderpickupdate},#{orderdeliverydate},#{orderdineinreceiveddate})")
+	@Insert("insert INTO RESTAURANT_ORDER (ono,orderdate,custemail,orderdineinflag,orderdeliveryflag,orderpickupflag,orderpickupdate,orderdeliverydate,orderdineinreceiveddate) values(#{ono},sysdate,#{custemail},#{orderdineinflag},#{orderdeliveryflag},#{orderpickupflag},sysdate,sysdate,sysdate)")
 	void insertOrder(Order order);
 	
 }
