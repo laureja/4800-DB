@@ -6,7 +6,26 @@ import java.util.List;
 
 public class menuForm {
     List<OrderDetails> orderDetailsList;
+    List<Menu> menu;
+    
+    
+    
+    
+    
+    public List<Menu> getMenu() {
+		return menu;
+	}
+
+	public void setMenu(List<Menu> menu) {
+		this.menu = menu;
+	}
+	public void addMenu(Menu menu) {
+        this.menu.add(menu);
+    }
+
 	
+    
+    
     public String getFlag() {
 		return flag;
 	}
@@ -18,6 +37,8 @@ public class menuForm {
 	String flag;
     
     
+	
+	
 	public menuForm(List<OrderDetails> orderDetailsList) {
 		super();
 		this.orderDetailsList = orderDetailsList;
@@ -46,6 +67,8 @@ public class menuForm {
 	public String toString() {
 		return "menuForm [orderDetailsList=" + orderDetailsList + ", flag=" + flag + "]";
 	}
+	
+	
 
 	
 

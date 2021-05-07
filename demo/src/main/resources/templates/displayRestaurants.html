@@ -46,7 +46,6 @@
 		</tr>
 
 		<tr th:each="restaurant : ${restaurantList}">
-			<td><a th:href="@{/editRestaurant/{id}(id=${restaurant.restid})}" th:text="${restaurant.rname}" target="_blank"></a></td>
 			<td><a th:href="@{/editRestaurant/{id}(id=${restaurant.restid})}" th:text="${restaurant.rname}"></a></td>
 			<td th:text="${restaurant.phone}"></td>
 			<td th:text="${restaurant.hours}"></td>

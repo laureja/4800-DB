@@ -62,11 +62,7 @@ public class MenuController {
 	public String formExampleDisplay(HttpServletRequest request, Model model) {
 		System.out.println("I am in displayResaurant inside Restaurant Controller");
 		
-////		HttpSession session = request.getSession(true);
-////		
-////		String userName = session.getAttribute("user").toString();
-////		
-//		System.out.println("userName from Session inside displayRestaurants :"+ userName);
+
 
 		List<Restaurant> restaurantList = new ArrayList<Restaurant>();
 		
@@ -98,7 +94,11 @@ public class MenuController {
 		menuList = menuService.getMenuList(restaurant);
 		
 		
+		orderForm.setMenu(menuList); 
+		
 		for (int i = 0; i <= menuList.size() - 1; i++) {
+			
+			
 			System.out.println(menuList.get(i).getFoodname());
 			OrderDetails o = new OrderDetails();
 			o.setFoodname(menuList.get(i).getFoodname());
@@ -122,7 +122,15 @@ public class MenuController {
 	}
 	
 	@PostMapping(value = "/createOrderPost")
-	public String createReview(@ModelAttribute menuForm orderForm, Model model) {
+	public String createReview(HttpServletRequest request,@ModelAttribute menuForm orderForm,@ModelAttribute Restaurant restaurant, Model model) {
+		
+		HttpSession session = request.getSession(true);
+		
+		String email = session.getAttribute("email").toString();
+		
+		System.out.println("userName from Session inside displayRestaurants :"+ email);
+		
+		
 		Random rd = new Random();
 		int orderNum = rd.nextInt();
 		Order order = new Order();
@@ -140,34 +148,39 @@ public class MenuController {
 			order.setOrderpickupflag('N');
 			order.setOrderdineinflag('N');
 		}
-		else
+		if (orderForm.getFlag().equals("Dine-in"))
 		{
 			order.setOrderdineinflag('Y');
 			order.setOrderdeliveryflag('N');
 			order.setOrderpickupflag('N');
 		}
-		order.setCustemail("franklin@restaurantadvisor.com");
+		order.setCustemail(email);
 		System.out.println("ORDER::" + order + "Form" + orderForm);
 		orderService.insertOrder(order);
 		for (int i = 0; i < orderForm.getOrderDetailsList().size() - 1; i++)
 		{
 			orderForm.getOrderDetailsList().get(i).setOno(orderNum);
-			orderService.insertOrderDetail(orderForm.getOrderDetailsList().get(i));
+			
+			if(orderForm.getOrderDetailsList().get(i).getQty() != 0) {
+				orderService.insertOrderDetail(orderForm.getOrderDetailsList().get(i));
+			}
+			
 		}
 		System.out.println("I am in saveReview inside Review Controller");
 		
 		System.out.println("Employee details in saveEmployee"+orderForm);
 		
-		
+		model.addAttribute("restaurant", restaurant);
 		model.addAttribute("menuForm", orderForm);
 		model.addAttribute("message","Update Successful");
 		
-		return "createOrder";
+		return "homeScreen";
 		
 	}
 	
 	private List<Integer> getSingleSelectAllValues() {
 		List<Integer> singleSelectAllValues = new ArrayList<Integer>();
+		singleSelectAllValues.add(0);
 		singleSelectAllValues.add(1);
 		singleSelectAllValues.add(2);
 		singleSelectAllValues.add(3);
