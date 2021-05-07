@@ -22,6 +22,7 @@ public interface CustomerMapper {
 	@Insert("insert into RESTAURANT_CUSTOMER (email,fname,minit,lname,phone,password,streetno,streetname,city,state,zip) values(#{email},#{fname},#{minit},#{lname},#{phone},#{password},#{streetno},#{streetname},#{city},#{state},#{zip})")
 	void insertCustomer(Customer customer);
 	
+	//Use for login
 	@Select("SELECT EMAIL,FNAME,MINIT,LNAME,PHONE,PASSWORD,STREETNO,STREETNAME,CITY,STATE,ZIP FROM RESTAURANT_CUSTOMER WHERE email=#{email}")
 	Customer getCustomerEmail(Customer customer);
 }

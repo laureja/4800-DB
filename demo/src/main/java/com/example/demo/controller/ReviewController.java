@@ -36,9 +36,9 @@ public class ReviewController {
 	public String formExampleDisplay(HttpServletRequest request, Model model) {
 		System.out.println("I am in displayResaurant inside Review Controller");
 		
-		HttpSession session = request.getSession(true);
-		String userName = session.getAttribute("user").toString();
-		
+//		HttpSession session = request.getSession(true);
+//		String userName = session.getAttribute("user").toString();
+//		
 
 		List<Restaurant> restaurantList = new ArrayList<Restaurant>();
 		

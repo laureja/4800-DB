@@ -29,12 +29,12 @@ public class RestaurantController {
 	@RequestMapping(value = "/displayRestaurants", method = RequestMethod.GET)
 	public String formExampleDisplay(HttpServletRequest request, Model model) {
 		System.out.println("I am in displayResaurant inside Restaurant Controller");
-		
-		HttpSession session = request.getSession(true);
-		
-		String userName = session.getAttribute("user").toString();
-		
-		System.out.println("userName from Session inside displayRestaurants :"+ userName);
+//		
+//		HttpSession session = request.getSession(true);
+//		
+//		String userName = session.getAttribute("user").toString();
+//		
+//		System.out.println("userName from Session inside displayRestaurants :"+ userName);
 		
 		List<Restaurant> restaurantList = new ArrayList<Restaurant>();
 		
