@@ -1,30 +1,35 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Login Form</title>
-    <link rel="stylesheet" type="text/css" href="../css/example.css" />
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Login Form</title>
+<link rel="stylesheet" type="text/css" href="../css/example.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
-<body>    
+<body>
 
-<span th:text="${message}" />
+	<span th:text="${message}" />
 
-<form action="#" th:action="@{/userLogin}" th:object="${user}" method="post">
-    <table class = "prettytable" border="1">
-        <tr>
-            <td>Username :</td>
-            <td><input type="text" th:field="*{userName}" /></td>
-        </tr>
-        <tr>
-            <td>Password :</td>
-            <td><input type="password" th:field="*{password}" /></td>
-        </tr>
-        
-        <tr>
-            <td><input type="submit" value="Submit" /></td>
-        </tr>
-    </table>
-</form>   
-    
+	<form action="#" th:action="@{/userLogin}" th:object="${customer}"
+		method="post">
+		<table class="prettytable" border="1">
+			<tr>
+				<td>Email :</td>
+				<td><input type="text" th:field="*{email}" /></td>
+			</tr>
+			<tr>
+				<td>Password :</td>
+				<td><input type="password" th:field="*{password}" /></td>
+			</tr>
+
+			<tr>
+				<td><input type="submit" value="Submit" /></td>
+			</tr>
+		</table>
+		<P>
+			</font><font size="4"> First time user , sign in <A
+				th:href="@{/NewCustomer}">here.</A>
+			</font>
+	</form>
+
 </body>
 </html>

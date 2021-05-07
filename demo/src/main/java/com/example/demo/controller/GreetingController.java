@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,12 +15,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.domain.Customer;
 import com.example.demo.domain.FormCommand;
 import com.example.demo.domain.Restaurant;
 import com.example.demo.domain.User;
+import com.example.demo.service.CustomerService;
+import com.example.demo.service.RestaurantService;
 
 @Controller
 public class GreetingController {
+	
+	@Autowired
+	CustomerService customerService;
 
 	@RequestMapping(value = "/greeting", method = RequestMethod.GET)
 	public String greeting(@RequestParam(name = "name", required = false, defaultValue = "World") String name,
@@ -30,11 +37,11 @@ public class GreetingController {
 	}
 
 	@RequestMapping(value = "/userLogin", method = RequestMethod.GET)
-	public String userLogin(HttpServletRequest request, @ModelAttribute User user, @ModelAttribute Restaurant restaurant, Model model) {
+	public String userLogin(HttpServletRequest request, @ModelAttribute Customer customer, @ModelAttribute Restaurant restaurant, Model model) {
 
 		String viewPage = "userLogin", message = "Please enter user name and password :";
 
-		model.addAttribute("user", user);
+		model.addAttribute("customer", customer);
 		model.addAttribute("restaurant",restaurant);
 		model.addAttribute("message", message);
 
@@ -42,22 +49,34 @@ public class GreetingController {
 	}
 
 	@RequestMapping(value = "/userLogin", method = RequestMethod.POST)
-	public String inputExamplePost(HttpServletRequest request, @ModelAttribute User user, @ModelAttribute Restaurant restaurant, Model model) {
-
+	public String inputExamplePost(HttpServletRequest request, @ModelAttribute User user, @ModelAttribute Customer customer, @ModelAttribute Restaurant restaurant, Model model) {
+		
+		Customer d = new Customer();
+		d.setEmail(customer.getEmail());
+		System.out.println("This is D " + d.getEmail());
+		d = customerService.getCustomerEmail(d);
+		
+		
+		
+		
 		String viewPage = "", message = "";
-
-		System.out.println("User Details :" + user);
-		String userName = user.getUserName();
-		String password = user.getPassword();
+//		System.out.println("User Details :" + user);
+		String email = customer.getEmail();
+		String password = customer.getPassword();
+		
+		String email2 = d.getEmail();
+		String password2 = d.getPassword();
 		
 		HttpSession session = request.getSession(true);
 		
 		
+		System.out.println("user input " + customer);
+		
 
-		if (userName.equals("dbcourse")) {
-			if (password.equals("ilovedatabase")) {	
+		if (email.equals(email2)) {
+			if (password.equals(password2)) {	
 				
-				session.setAttribute("user", userName);
+				session.setAttribute("email", email);
 				
 				viewPage = "homeScreen";
 			} else {
@@ -74,7 +93,7 @@ public class GreetingController {
 		}
 		
 		model.addAttribute("restaurant",restaurant);
-		model.addAttribute("user", user);
+		model.addAttribute("email", email);
 		model.addAttribute("message", message);
 
 		return viewPage;

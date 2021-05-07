@@ -12,13 +12,16 @@ import com.example.demo.domain.Customer;
 @Mapper
 public interface CustomerMapper {
 	
+	
 	@Select("SELECT EMAIL,FNAME,MINIT,LNAME,PHONE,PASSWORD,STREETNO,STREETNAME,CITY,STATE,ZIP FROM RESTAURANT_CUSTOMER")
 	List<Customer> getCustomerList();
 	
 	@Update("update RESTAURANT_CUSTOMER set fname=#{fname},minit=#{minit},lname=#{lname},phone=#{phone},password=#{password},streetno=#{streetno},streetname=#{streetname},city=#{city},state=#{state},zip=#{zip} where email=#{email}")
 	void saveCustomer(Customer customer);
 	
-	@Insert("insert RESTAURANT_CUSTOMER (email,fname,minit,lname,phone,password,streetno,streetname,city,state,zip) values(#{email},#{fname},#{minit},#{lname},#{phone},#{password},#{streetno},#{streetname},#{city},#{state},#{zip})")
+	@Insert("insert into RESTAURANT_CUSTOMER (email,fname,minit,lname,phone,password,streetno,streetname,city,state,zip) values(#{email},#{fname},#{minit},#{lname},#{phone},#{password},#{streetno},#{streetname},#{city},#{state},#{zip})")
 	void insertCustomer(Customer customer);
-
+	
+	@Select("SELECT EMAIL,FNAME,MINIT,LNAME,PHONE,PASSWORD,STREETNO,STREETNAME,CITY,STATE,ZIP FROM RESTAURANT_CUSTOMER WHERE email=#{email}")
+	Customer getCustomerEmail(Customer customer);
 }

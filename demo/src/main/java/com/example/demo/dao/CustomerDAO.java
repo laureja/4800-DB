@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.example.demo.domain.Customer;
+import com.example.demo.domain.Review;
 @Component
 public class CustomerDAO {
 	
@@ -25,6 +26,13 @@ public class CustomerDAO {
 		customerMapper.saveCustomer(customer);
 	}
 	
+	public void insertCustomer(Customer customer) {
+		customerMapper.insertCustomer(customer);
+	}
 	
+	public Customer getCustomerEmail(Customer customer) {
+		customerMapper.getCustomerEmail(customer);
+		return customer;
+	}
 
 }

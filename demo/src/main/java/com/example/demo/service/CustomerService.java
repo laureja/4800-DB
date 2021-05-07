@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 import com.example.demo.dao.CustomerDAO;
 import com.example.demo.domain.Customer;
+import com.example.demo.domain.Review;
 
 @Component
 public class CustomerService {
@@ -19,5 +20,12 @@ public class CustomerService {
 	
 	public void saveCustomer(Customer customer) {
 		customerDAO.saveCustomer(customer);
+	}
+	
+	public void insertCustomer(Customer customer) {
+		customerDAO.insertCustomer(customer);
+	}
+	public Customer getCustomerEmail(Customer customer) {
+		return customerDAO.getCustomerEmail(customer);
 	}
 }

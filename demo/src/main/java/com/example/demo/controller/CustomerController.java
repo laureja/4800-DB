@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.demo.domain.Customer;
 import com.example.demo.domain.FormCommand;
 import com.example.demo.domain.Restaurant;
+import com.example.demo.domain.Review;
 import com.example.demo.domain.User;
 import com.example.demo.service.CustomerService;
 
@@ -90,6 +91,29 @@ public class CustomerController {
 		model.addAttribute("message", message);
 
 		return "login";
+	}
+	@RequestMapping(value = "/NewCustomer", method = RequestMethod.GET)
+	public String newCustomerLogin(HttpServletRequest request, @ModelAttribute Customer customer, Model model) {
+
+
+
+		return "NewCustomer";
+	}
+	
+	@RequestMapping(value = "/createNewUser", method = RequestMethod.POST)
+	public String createUser(@ModelAttribute Customer customer, Model model) {
+		
+		System.out.println("I am in saveReview inside Review Controller");
+		
+		System.out.println("Employee details in saveEmployee"+customer);
+		
+		customerService.insertCustomer(customer);
+		
+		model.addAttribute("customer", customer);
+		model.addAttribute("message","Update Successful");
+		
+		return "userLogin";
+		
 	}
 
 }

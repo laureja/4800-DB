@@ -1,58 +1,63 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Create Review</title>
+<link rel="stylesheet" type="text/css" href="../css/example.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
 
-<html>
-<head><title>Online Movie New Customer Sign In Page</title></head>
-<body bgcolor="#FFFFCC">
-<center><font size=5><font color =blue>Online Restaurant Advisor System
-<P> 
-New Customer Sign-Up</font>
-<P>
-<form action="http://www.mscs.mu.edu:8080/praveen/servlet/NewCustomer" method="POST">
-<table border=1>
-<tr>
-<td>First Name:</td>
-<td><INPUT TYPE="text" name="FName" size=20 maxlength=40 value=""></td>
-</tr>
-<tr>
-<td>Last Name:</td>
-<td><INPUT TYPE="text" name="LName" size=20 maxlength=40 value=""></td>
-</tr>
-<tr>
-<td>Email:</td>
-<td><INPUT TYPE="text" name="Email" size=20 maxlength=40 value=""></td>
-</tr>
-<tr>
-<td>Street No:</td>
-<td><INPUT TYPE="text" name="StreetNo" size=30 maxlength=40 value=""></td>
-</tr>
-<tr>
-<td>Street Name:</td>
-<td><INPUT TYPE="text" name="StreetName" size=30 maxlength=40 value=""></td>
-</tr>
-<tr>
-<td>City:</td>
-<td><INPUT TYPE="text" name="City" size=20 maxlength=40 value=""></td>
-</tr>
-<tr>
-<td>State:</td>
-<td><INPUT TYPE="text" name="State" size=20 maxlength=40 value=""></td>
-</tr>
-<tr>
-<td>Zip:</td>
-<td><INPUT TYPE="text" name="Zip" size=10 maxlength=40 value=""></td>
-</tr>
-<tr>
-<td>Phone:</td>
-<td><INPUT TYPE="text" name="Phone" size=10 maxlength=20 value=""></td>
-</tr>
-<tr>
-<td>Password:</td>
-<td><INPUT TYPE="password" name="password" size=10 maxlength=20 value=""></td>
-</tr>
-</table>
-<P>
-<INPUT TYPE="submit" value="Proceed">
-<INPUT TYPE="reset" value="reset">
-</form>
-</center>
+	<form action="#" th:action="@{/createNewUser}" th:object="${customer}"
+		method="post">
+		<table class="prettytable" border="1">
+			<tr>
+				<td>Email:</td>
+				<td><input type="text" th:field="*{email}" /></td>
+			</tr>
+			<tr>
+				<td>First Name:</td>
+				<td><input type="text" th:field="*{fname}" /></td>
+			</tr>
+			<tr>
+				<td>Middle Initial:</td>
+				<td><input type="text" th:field="*{minit}" /></td>
+			</tr>
+			<tr>
+				<td>Last Name:</td>
+				<td><input type="text" th:field="*{lname}" /></td>
+			</tr>
+			<tr>
+				<td>Phone Number:</td>
+				<td><input type="text" th:field="*{phone}" /></td>
+			</tr>
+			<tr>
+				<td>Password:</td>
+				<td><input type="text" th:field="*{password}" /></td>
+			</tr>
+			<tr>
+				<td>Street Number:</td>
+				<td><input type="text" th:field="*{streetno}" /></td>
+			</tr>
+			<tr>
+				<td>Street Name:</td>
+				<td><input type="text" th:field="*{streetname}" /></td>
+			</tr>
+			<tr>
+				<td>City:</td>
+				<td><input type="text" th:field="*{city}" /></td>
+			</tr>
+			<tr>
+				<td>State:</td>
+				<td><input type="text" th:field="*{state}" /></td>
+			</tr>
+			<tr>
+				<td>Zip:</td>
+				<td><input type="text" th:field="*{zip}" /></td>
+			</tr>
+			<tr>
+				<td><input type="submit" value="Submit" /></td>
+			</tr>
+		</table>
+	</form>
 </body>
 </html>
